@@ -30,7 +30,16 @@ class RewardsControllerTest {
 
 
     @Test
-    void testGetRewardsByCustomerId_CustomerRepositoryReturnsAbsent() {
+    void testGetRewardsByCustomerId_Failure() {
+        // Setup
+        when(mockCustomerRepository.findByCustomerId(0L)).thenReturn(Optional.empty());
+        // Run the test
+        assertThatThrownBy(() -> rewardsControllerUnderTest.getRewardsByCustomerId(0L))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void testGetRewardsByCustomerId_Success() {
         // Setup
         when(mockCustomerRepository.findByCustomerId(0L)).thenReturn(Optional.empty());
 
@@ -38,4 +47,5 @@ class RewardsControllerTest {
         assertThatThrownBy(() -> rewardsControllerUnderTest.getRewardsByCustomerId(0L))
                 .isInstanceOf(RuntimeException.class);
     }
+
 }

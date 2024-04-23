@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.within;
-
+@ExtendWith(MockitoExtension.class)
 @ExtendWith(MockitoExtension.class)
 class TransactionTest {
 
